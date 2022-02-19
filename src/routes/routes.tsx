@@ -1,4 +1,5 @@
 // @pages
+import DetailsPage from "../pages/details-page";
 import HomePage from "../pages/home-page";
 import Layout from "../layout";
 import NotFoundPage from "../pages/not-found-page";
@@ -15,6 +16,11 @@ const routes: Route[] = [
     component: HomePage,
     layout: Layout,
     path: "/",
+  },
+  {
+    component: DetailsPage,
+    layout: Layout,
+    path: "/details/:id",
   },
   {
     component: NotFoundPage,

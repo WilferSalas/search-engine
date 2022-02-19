@@ -47,17 +47,17 @@ const SearchComponent: FC<Props> = ({
 }) => (
   <Stack direction="row" id={`search-component-${id}`}>
     <Autocomplete
+      autoComplete={false}
       disableClearable
       freeSolo
       fullWidth
       id={`search-input-${id}`}
-      onChange={onSelect}
       inputValue={value}
+      onChange={onSelect}
       onInputChange={onChange}
+      onKeyDown={(event) => event.key === "Enter" && onSubmit(event)}
       options={data.map((option) => option.title)}
       value={value}
-      onKeyDown={(event) => event.key === "Enter" && onSubmit(event)}
-      autoComplete={false}
       renderInput={(params) => (
         <TextField
           placeholder="Search"
