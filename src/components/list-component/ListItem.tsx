@@ -1,4 +1,5 @@
 // @packages
+import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import Link from "@mui/material/Link";
 import Paper from "@mui/material/Paper";
@@ -21,9 +22,14 @@ const ListItem: FC<Props> = ({ id, image, title, shortDescription }) => {
   };
 
   return (
-    <Paper container component={Grid} sx={{ margin: "10px 0" }}>
+    <Paper container component={Grid} sx={{ margin: "5px 0" }}>
       <Grid item xs={2} sx={{ textAlign: "center", display: "flex" }}>
-        <img alt={title} src={image} style={{ maxWidth: 130 }} />
+        <Box
+          component="img"
+          alt={title}
+          src={image}
+          sx={{ maxWidth: "100%" }}
+        />
       </Grid>
       <Grid item xs={10} sx={{ padding: 2 }}>
         <Typography

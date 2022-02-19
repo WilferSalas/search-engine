@@ -58,7 +58,7 @@ const HomePage = () => {
   };
 
   return (
-    <Container id="home-page" maxWidth="md">
+    <Container id="home-page">
       <Box id="home-title" sx={{ my: 4 }}>
         <Typography align="center" id="home-typography" variant="h4">
           Search Engine
