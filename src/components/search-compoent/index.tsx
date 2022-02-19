@@ -56,7 +56,7 @@ const SearchComponent: FC<Props> = ({
       onChange={onSelect}
       onInputChange={onChange}
       onKeyDown={(event) => event.key === "Enter" && onSubmit(event)}
-      options={data.map((option) => option.title)}
+      options={data?.map((option) => option.title)}
       value={value}
       renderInput={(params) => (
         <TextField

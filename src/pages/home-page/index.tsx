@@ -1,15 +1,14 @@
 // @packages
+import axios from "axios";
 import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
 import React, { SyntheticEvent, useState } from "react";
 import Typography from "@mui/material/Typography";
+import { useQuery } from "react-query";
 
 // @scripts
 import ListComponent from "../../components/list-component";
 import SearchComponent from "../../components/search-compoent";
-
-// mock-data
-import mockData from "../../data/mock/mock-data.json";
 
 type item = {
   description: string;
@@ -23,10 +22,23 @@ const HomePage = () => {
   const [value, setValue] = useState<string>("");
   const [results, setResults] = useState<item[] | null>(null);
 
+  const fetchMovies = async () => {
+    if (value.length > 0) {
+      return await axios
+        .post("http://localhost:3001/api/v1/movies", {
+          searchTerm: value,
+        })
+        .then((res) => res.data);
+    }
+  };
+
+  const { data } = useQuery(["movies", value], fetchMovies);
+
   const handleOnChange = (
     event: SyntheticEvent<Element, Event>,
     value: string
   ) => {
+    setResults(null);
     setValue(value);
   };
 
@@ -34,27 +46,12 @@ const HomePage = () => {
     event: SyntheticEvent<Element, Event>,
     value: string
   ) => {
-    if (value) {
-      setResults(
-        [...mockData].filter((item) =>
-          item.title.toLocaleLowerCase().includes(value.toLocaleLowerCase())
-        )
-      );
-    } else {
-      setResults(null);
-    }
+    setValue(value);
+    setResults(data);
   };
 
   const handleOnSubmit = () => {
-    if (value) {
-      setResults(
-        [...mockData].filter((item) =>
-          item.title.toLocaleLowerCase().includes(value.toLocaleLowerCase())
-        )
-      );
-    } else {
-      setResults(null);
-    }
+    setResults(data);
   };
 
   return (
@@ -65,7 +62,7 @@ const HomePage = () => {
         </Typography>
       </Box>
       <SearchComponent
-        data={mockData}
+        data={data || []}
         id="home-page"
         onChange={handleOnChange}
         onSelect={handleOnSelect}
@@ -73,7 +70,7 @@ const HomePage = () => {
         value={value}
       />
       <Box sx={{ marginTop: 5 }}>
-        {results && <ListComponent data={results} id="home-page" />}
+        {results && <ListComponent data={data} id="home-page" />}
       </Box>
     </Container>
   );

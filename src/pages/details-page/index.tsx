@@ -1,37 +1,30 @@
 // @packages
+import axios from "axios";
 import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import Typography from "@mui/material/Typography";
 import { useParams } from "react-router-dom";
-
-// mock-data
-import mockData from "../../data/mock/mock-data.json";
-
-type Item = {
-  description: string;
-  id: string;
-  image: string;
-  shortDescription: string;
-  title: string;
-};
+import { useQuery } from "react-query";
 
 const DetailsPage = () => {
   const { id } = useParams();
-  const [data, setData] = useState<Item | undefined>();
 
-  useEffect(() => {
-    const result = mockData.find((item) => item.id === id);
+  const fetchMovie = async () => {
+    return await axios(`http://localhost:3001/api/v1/movies/${id}`).then(
+      (res) => res.data
+    );
+  };
 
-    setData(result);
-  }, []);
+  const { data } = useQuery("movie-details", fetchMovie);
 
   return (
     <Container id="details-page">
-      <Box id="details-image" sx={{ my: 4, display: "flex" }}>
+      <Box id="details-information" sx={{ my: 4, display: "flex" }}>
         <Box
-          component="img"
           alt={data?.title}
+          component="img"
+          id="details-image"
           src={data?.image}
           sx={{ maxWidth: 400 }}
         />

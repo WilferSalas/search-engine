@@ -9,8 +9,10 @@
     "@mui/material": "latest",
     "@types/react": "latest",
     "@types/react-dom": "latest",
+    "axios": "^0.26.0",
     "react": "latest",
     "react-dom": "latest",
+    "react-query": "^3.34.15",
     "react-router-dom": "^6.2.1",
     "react-scripts": "latest",
     "typescript": "latest"

@@ -26,7 +26,7 @@ type item = {
 
 const ListComponent: FC<Props> = ({ data, id }) => (
   <Grid container id={`list-component-${id}`}>
-    {data.map(({ id, image, shortDescription, title }: item) => (
+    {data?.map(({ id, image, shortDescription, title }: item) => (
       <ListItem
         id={id}
         image={image}
