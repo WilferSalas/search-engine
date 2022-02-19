@@ -29,7 +29,11 @@ interface Props {
     reason: AutocompleteChangeReason,
     details?: AutocompleteChangeDetails<string> | undefined
   ) => void;
-  onSubmit: (event: React.MouseEvent<HTMLButtonElement>) => void;
+  onSubmit: (
+    event:
+      | React.MouseEvent<HTMLButtonElement>
+      | React.KeyboardEvent<HTMLDivElement>
+  ) => void;
   value: string;
 }
 
@@ -52,6 +56,8 @@ const SearchComponent: FC<Props> = ({
       onInputChange={onChange}
       options={data.map((option) => option.title)}
       value={value}
+      onKeyDown={(event) => event.key === "Enter" && onSubmit(event)}
+      autoComplete={false}
       renderInput={(params) => (
         <TextField
           placeholder="Search"
