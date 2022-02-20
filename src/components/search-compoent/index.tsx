@@ -14,7 +14,7 @@ import Typography from "@mui/material/Typography";
 // @interfaces
 import { Movie } from "../../interfaces";
 
-interface Props {
+export interface Props {
   data: Movie[];
   id: string;
   onChange: (
