@@ -9,14 +9,11 @@ import React, { FC, SyntheticEvent } from "react";
 import Stack from "@mui/material/Stack";
 import TextField from "@mui/material/TextField";
 
+// @interfaces
+import { Movie } from "../../interfaces";
+
 interface Props {
-  data: {
-    description: string;
-    id: string;
-    image: string;
-    shortDescription: string;
-    title: string;
-  }[];
+  data: Movie[];
   id: string;
   onChange: (
     event: SyntheticEvent<Element, Event>,

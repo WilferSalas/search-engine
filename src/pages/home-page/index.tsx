@@ -1,38 +1,22 @@
 // @packages
-import axios from "axios";
 import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
 import React, { SyntheticEvent, useState } from "react";
 import Typography from "@mui/material/Typography";
-import { useQuery } from "react-query";
 
 // @scripts
 import ListComponent from "../../components/list-component";
 import SearchComponent from "../../components/search-compoent";
+import { useFetchMovies } from "../../api";
 
-type item = {
-  description: string;
-  id: string;
-  image: string;
-  shortDescription: string;
-  title: string;
-};
+// @interfaces
+import { Movie } from "../../interfaces";
 
 const HomePage = () => {
   const [value, setValue] = useState<string>("");
-  const [results, setResults] = useState<item[] | null>(null);
+  const [results, setResults] = useState<Movie[] | null>(null);
 
-  const fetchMovies = async () => {
-    if (value.length > 0) {
-      return await axios
-        .post("http://localhost:3001/api/v1/movies", {
-          searchTerm: value,
-        })
-        .then((res) => res.data);
-    }
-  };
-
-  const { data } = useQuery(["movies", value], fetchMovies);
+  const { data } = useFetchMovies(value);
 
   const handleOnChange = (
     event: SyntheticEvent<Element, Event>,

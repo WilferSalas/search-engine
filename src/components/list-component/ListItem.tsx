@@ -7,14 +7,10 @@ import React, { FC } from "react";
 import Typography from "@mui/material/Typography";
 import { useNavigate } from "react-router-dom";
 
-interface Props {
-  id: string;
-  image: string;
-  shortDescription: string;
-  title: string;
-}
+// @interfaces
+import { Movie } from "../../interfaces";
 
-const ListItem: FC<Props> = ({ id, image, title, shortDescription }) => {
+const ListItem: FC<Movie> = ({ id, image, title, shortDescription }) => {
   const navigate = useNavigate();
 
   const handleOnClick = () => {

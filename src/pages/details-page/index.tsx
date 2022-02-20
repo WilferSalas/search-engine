@@ -1,22 +1,17 @@
 // @packages
-import axios from "axios";
 import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
 import React from "react";
 import Typography from "@mui/material/Typography";
 import { useParams } from "react-router-dom";
-import { useQuery } from "react-query";
+
+// @scripts
+import { useFetchMovie } from "../../api";
 
 const DetailsPage = () => {
   const { id } = useParams();
 
-  const fetchMovie = async () => {
-    return await axios(`http://localhost:3001/api/v1/movies/${id}`).then(
-      (res) => res.data
-    );
-  };
-
-  const { data } = useQuery("movie-details", fetchMovie);
+  const { data } = useFetchMovie(id);
 
   return (
     <Container id="details-page">
