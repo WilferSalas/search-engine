@@ -46,16 +46,13 @@ const HomePage = () => {
         </Typography>
       </Box>
       <SearchComponent
-        data={data || []}
+        data={data}
         id="home-page"
         onChange={handleOnChange}
         onSelect={handleOnSelect}
         onSubmit={handleOnSubmit}
         value={value}
       />
-      {data?.length == 0 && (
-        <Typography variant="caption">No results found for: {value}</Typography>
-      )}
       <Box sx={{ mt: 5 }}>
         {results && <ListComponent data={data} id="home-page" />}
       </Box>
