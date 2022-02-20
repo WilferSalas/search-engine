@@ -18,8 +18,8 @@ const ListItem: FC<Movie> = ({ id, image, title, shortDescription }) => {
   };
 
   return (
-    <Paper container component={Grid} sx={{ margin: "5px 0" }}>
-      <Grid item xs={2} sx={{ textAlign: "center", display: "flex" }}>
+    <Paper container component={Grid} sx={{ m: "5px 0" }}>
+      <Grid item xs={4} md={2} sx={{ textAlign: "center", display: "flex" }}>
         <Box
           component="img"
           alt={title}
@@ -27,7 +27,7 @@ const ListItem: FC<Movie> = ({ id, image, title, shortDescription }) => {
           sx={{ maxWidth: "100%" }}
         />
       </Grid>
-      <Grid item xs={10} sx={{ padding: 2 }}>
+      <Grid item xs={8} md={10} sx={{ p: 2 }}>
         <Typography
           component={Link}
           gutterBottom

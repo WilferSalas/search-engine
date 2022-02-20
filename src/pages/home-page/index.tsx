@@ -53,7 +53,7 @@ const HomePage = () => {
         onSubmit={handleOnSubmit}
         value={value}
       />
-      <Box sx={{ marginTop: 5 }}>
+      <Box sx={{ mt: 5 }}>
         {results && <ListComponent data={data} id="home-page" />}
       </Box>
     </Container>

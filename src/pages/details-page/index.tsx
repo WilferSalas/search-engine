@@ -15,13 +15,18 @@ const DetailsPage = () => {
 
   return (
     <Container id="details-page">
-      <Box id="details-information" sx={{ my: 4, display: "flex" }}>
+      <Box id="details-information" sx={{ my: 2, display: [null, "flex"] }}>
         <Box
           alt={data?.title}
           component="img"
           id="details-image"
           src={data?.image}
-          sx={{ maxWidth: 400 }}
+          sx={{
+            maxWidth: [250, 400, 400],
+            pb: 2,
+            display: ["block", "flex"],
+            m: "0 auto",
+          }}
         />
         <Box id="details-info" sx={{ mx: 4 }}>
           <Typography gutterBottom id="details-title-typography" variant="h4">
