@@ -6,6 +6,7 @@ import Paper from "@mui/material/Paper";
 import React, { FC } from "react";
 import Typography from "@mui/material/Typography";
 import { useNavigate } from "react-router-dom";
+import { motion } from "framer-motion";
 
 // @interfaces
 import { Movie } from "../../interfaces";
