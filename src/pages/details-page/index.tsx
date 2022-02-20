@@ -18,9 +18,9 @@ const DetailsPage = () => {
     <Box
       component={Container}
       id="details-information"
-      sx={{ display: [null, "flex"], p: 5 }}
+      sx={{ display: [null, "flex"], py: 5 }}
     >
-      <Box id="details-info" sx={{ mx: 4 }}>
+      <Box id="details-info" sx={{ mr: [null, 15] }}>
         <Typography id="details-title-typography" variant="h2">
           {data?.title}
         </Typography>
