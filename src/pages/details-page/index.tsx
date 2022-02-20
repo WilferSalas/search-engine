@@ -22,7 +22,7 @@ const DetailsPage = () => {
           id="details-image"
           src={data?.image}
           sx={{
-            maxWidth: [250, 400],
+            maxWidth: [250, 400, 400],
             pb: 2,
             display: ["block", "flex"],
             m: "auto",

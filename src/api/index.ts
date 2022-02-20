@@ -2,13 +2,15 @@
 import axios from "axios";
 import { useQuery } from "react-query";
 
+const client = "http://localhost:3001/api/v1";
+
 export const useFetchMovies = (value: string) => {
-  const isLongEnough = value.length > 1;
+  const isLongEnough = value.length > 0;
   return useQuery(
     ["movies", value],
     () =>
       axios
-        .post("http://localhost:3001/api/v1/movies", {
+        .post(`${client}/movies`, {
           searchTerm: value,
         })
         .then((res) => res.data),
@@ -18,6 +20,6 @@ export const useFetchMovies = (value: string) => {
 
 export const useFetchMovie = (id: string | undefined) => {
   return useQuery("Movie", () =>
-    axios(`http://localhost:3001/api/v1/movies/${id}`).then((res) => res.data)
+    axios(`${client}/movies/${id}`).then((res) => res.data)
   );
 };
