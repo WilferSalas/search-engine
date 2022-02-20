@@ -30,6 +30,7 @@ const ListItem: FC<Movie> = ({ id, image, title, shortDescription }) => {
       <Grid item xs={8} md={10} sx={{ p: 2 }}>
         <Typography
           component={Link}
+          data-testid="list-item-title"
           gutterBottom
           onClick={handleOnClick}
           sx={{ cursor: "pointer" }}
@@ -37,7 +38,9 @@ const ListItem: FC<Movie> = ({ id, image, title, shortDescription }) => {
         >
           {title}
         </Typography>
-        <Typography>{shortDescription}</Typography>
+        <Typography data-testid="list-item-description">
+          {shortDescription}
+        </Typography>
       </Grid>
     </Paper>
   );

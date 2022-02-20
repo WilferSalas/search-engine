@@ -8,7 +8,7 @@ import ListItem from "./ListItem";
 // @interfaces
 import { Movie } from "../../interfaces";
 
-interface Props {
+export interface Props {
   data: Movie[];
   id: string;
 }
