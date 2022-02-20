@@ -22,10 +22,10 @@ const DetailsPage = () => {
           id="details-image"
           src={data?.image}
           sx={{
-            maxWidth: [250, 400, 400],
+            maxWidth: [250, 400],
             pb: 2,
             display: ["block", "flex"],
-            m: "0 auto",
+            m: "auto",
           }}
         />
         <Box id="details-info" sx={{ mx: 4 }}>
