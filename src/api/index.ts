@@ -20,6 +20,6 @@ export const useFetchMovies = (value: string) => {
 
 export const useFetchMovie = (id: string | undefined) => {
   return useQuery("Movie", () =>
-    axios(`${client}/movies/${id}`).then((res) => res.data)
+    axios(`${client}/movies/movie/${id}`).then((res) => res.data)
   );
 };
