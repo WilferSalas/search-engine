@@ -22,16 +22,3 @@ export const useFetchMovie = (id: string | undefined) => {
     axios(`${developmentClient}/movies/movie/${id}`).then((res) => res.data)
   );
 };
-
-export const useFetchSimilar = (value: string) => {
-  return useQuery(
-    "similar",
-    () =>
-      axios
-        .post(`${developmentClient}/movies/similar`, {
-          searchTerm: value,
-        })
-        .then((res) => res.data),
-    { enabled: false }
-  );
-};

@@ -1,6 +1,6 @@
 // @packages
 import React from "react";
-import { render, within } from "@testing-library/react";
+import { render } from "@testing-library/react";
 import "@testing-library/jest-dom/extend-expect";
 
 // @scripts
