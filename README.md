@@ -16,7 +16,7 @@ Site deployed in (https://elated-ramanujan-4d7d43.netlify.app/).
 
 # Installation:
 
-Open a console (terminal) and create the **Search Engine**'s containers. Once containers are created, follow this instructions
+Open a console (terminal) and create the **Search Engine**'s folder. Once folder is created, follow this instructions
 
 ```bash
 # Clone project
