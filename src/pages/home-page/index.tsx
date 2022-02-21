@@ -28,7 +28,7 @@ const HomePage = () => {
       <Box
         animate={{ y: movies && movies?.length > 0 ? 0 : 130 }}
         component={motion.div}
-        id="home-title"
+        id="home-animation"
         sx={{ mt: 6 }}
       >
         <Typography
@@ -46,10 +46,8 @@ const HomePage = () => {
           onSubmit={handleOnSubmit}
           value={value}
         />
-        {value && movies?.length == 0 && (
-          <Typography variant="caption">
-            No results found for: {value}
-          </Typography>
+        {movies?.length == 0 && (
+          <Typography variant="caption">No results found, try again</Typography>
         )}
       </Box>
       <Box sx={{ mt: 5 }}>
