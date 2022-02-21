@@ -4,15 +4,17 @@ import Container from "@mui/material/Container";
 import React from "react";
 import Typography from "@mui/material/Typography";
 import { useParams } from "react-router-dom";
-import Paper from "@mui/material/Paper";
 
 // @scripts
+import MovieNotFound from "./MovieNotFound";
 import { useFetchMovie } from "../../api";
 
 const DetailsPage = () => {
   const { id } = useParams();
 
   const { data } = useFetchMovie(id);
+
+  if (!data) return <MovieNotFound />;
 
   return (
     <Box
