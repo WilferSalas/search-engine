@@ -8,23 +8,20 @@ import { motion } from "framer-motion";
 // @scripts
 import ListComponent from "../../components/list-component";
 import SearchComponent from "../../components/search-compoent";
-import { useFetchMovies } from "../../api";
-
-// @interfaces
-import { Movie } from "../../interfaces";
+import { useFetchMovies, useFetchSimilar } from "../../api";
 
 const HomePage = () => {
   const [value, setValue] = useState<string>("");
-  const [results, setResults] = useState<Movie[] | null>(null);
 
-  const { data } = useFetchMovies(value);
+  const { data: movies, refetch: refetchMovies } = useFetchMovies(value);
+  const { data: similar, refetch: refetchSimilar } = useFetchSimilar(value);
 
   const handleOnChange = (
     event: SyntheticEvent<Element, Event>,
     value: string
   ) => {
-    setResults(null);
     setValue(value);
+    refetchSimilar();
   };
 
   const handleOnSelect = (
@@ -32,17 +29,16 @@ const HomePage = () => {
     value: string
   ) => {
     setValue(value);
-    setResults(data);
   };
 
   const handleOnSubmit = () => {
-    setResults(data);
+    refetchMovies();
   };
 
   return (
     <Container id="home-page">
       <Box
-        animate={{ y: results ? 0 : 130 }}
+        animate={{ y: movies && movies?.length > 0 ? 0 : 130 }}
         component={motion.div}
         id="home-title"
         sx={{ mt: 6 }}
@@ -57,16 +53,21 @@ const HomePage = () => {
           Search Engine
         </Typography>
         <SearchComponent
-          data={data}
+          data={similar}
           id="home-page"
           onChange={handleOnChange}
           onSelect={handleOnSelect}
           onSubmit={handleOnSubmit}
           value={value}
         />
+        {value && movies?.length == 0 && (
+          <Typography variant="caption">
+            No results found for: {value}
+          </Typography>
+        )}
       </Box>
       <Box sx={{ mt: 5 }}>
-        {results && <ListComponent data={data} id="home-page" />}
+        {movies && <ListComponent data={movies} id="home-page" />}
       </Box>
     </Container>
   );

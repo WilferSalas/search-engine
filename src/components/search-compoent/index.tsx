@@ -9,7 +9,6 @@ import Button from "@mui/material/Button";
 import React, { FC, SyntheticEvent } from "react";
 import Stack from "@mui/material/Stack";
 import TextField from "@mui/material/TextField";
-import Typography from "@mui/material/Typography";
 
 // @interfaces
 import { Movie } from "../../interfaces";
@@ -28,11 +27,7 @@ export interface Props {
     reason: AutocompleteChangeReason,
     details?: AutocompleteChangeDetails<string> | undefined
   ) => void;
-  onSubmit: (
-    event:
-      | React.MouseEvent<HTMLButtonElement>
-      | React.KeyboardEvent<HTMLDivElement>
-  ) => void;
+  onSubmit: () => void;
   value: string;
 }
 
@@ -55,12 +50,12 @@ const SearchComponent: FC<Props> = ({
         inputValue={value}
         onChange={onSelect}
         onInputChange={onChange}
-        onKeyDown={(event) => event.key === "Enter" && onSubmit(event)}
         options={data?.map((option) => option.title) || []}
         value={value}
         renderInput={(params) => (
           <TextField
             placeholder="Search"
+            onKeyDown={(event) => event.key === "Enter" && onSubmit()}
             {...params}
             InputProps={{
               ...params.InputProps,
@@ -73,9 +68,6 @@ const SearchComponent: FC<Props> = ({
         Search
       </Button>
     </Stack>
-    {data?.length == 0 && (
-      <Typography variant="caption">No results found for: {value}</Typography>
-    )}
   </Box>
 );
 
